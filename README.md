@@ -23,7 +23,7 @@ var app = assemble()
 
 **Register scaffolds**
 
-Uses [scaffold][] to create normalize configuration objects:
+Uses [scaffold](https://github.com/jonschlinkert/scaffold) to create normalize configuration objects:
 
 ```js
 app.scaffold('ejs', {
