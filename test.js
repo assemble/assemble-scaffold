@@ -116,6 +116,27 @@ describe('scaffold', function () {
     assert(typeof config.generate === 'function');
   });
 
+  it.skip('should decorate a `use` method onto registered scaffolds:', function () {
+    var app = assemble()
+      .use(scaffold())
+
+    app.scaffold('bar', {
+      src: ['*.js'],
+      dest: 'actual'
+    });
+
+    app.scaffold('bar')
+      .use(function (config) {
+        console.log(config);
+      })
+      .generate('dist/', function (err) {
+        console.log(arguments)
+      });
+
+    assert(typeof app.scaffolds.bar === 'object');
+    assert(typeof app.scaffolds.bar.generate === 'function');
+  });
+
   it('should throw an error on invalid arguments:', function () {
     (function () {
       scaffold()();
