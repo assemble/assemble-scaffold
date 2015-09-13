@@ -37,6 +37,11 @@ module.exports = function assembleScaffold(options) {
 
       var scaffold = new Scaffold(name, config);
 
+      scaffold.use = function (fn) {
+        fn.call(this, this);
+        return this;
+      };
+
       scaffold.generate = function (dest/*, cb*/) {
         var args = [].slice.call(arguments);
         if (typeof dest === 'string') {
